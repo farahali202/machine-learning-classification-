@@ -1,0 +1,25 @@
+name: class_model
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: cml
+        env: 
+          repo_tocken: $({ secrets.HG })
+        run: 
+        #ypur ml workfile goes here
+          pip install -r requirements.txt
+          python Machine Learning  - Predicting insurance type.ipynb
+          echo "model"
+    
